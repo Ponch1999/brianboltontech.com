@@ -42,21 +42,40 @@ body {
 
 /* Blue Glow Animation */
 @keyframes pulseBlue {
-    0%, 100% {
-        color: #00f;
-        text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 15px #0ff;
-    }
-    50% {
-        color: #66f;
-        text-shadow: 0 0 15px #66f, 0 0 25px #0ff, 0 0 35px #0ff;
-    }
+  0%,
+  100% {
+    color: #00f;
+    text-shadow: 0 0 5px #00f, 0 0 10px #00f, 0 0 15px #0ff;
+  }
+  50% {
+    color: #66f;
+    text-shadow: 0 0 15px #66f, 0 0 25px #0ff, 0 0 35px #0ff;
+  }
+  99% {
+    color: #fff;
+    text-shadow: none;
+  }
+  100% {
+    color: #fff;
+    text-shadow: none;
+}
+
+.blue-glow {
+  font-size: 3em;
+  font-weight: bold;
+  font-family: 'Orbitron', sans-serif;
+  animation: pulseBlue 3s ease-in-out 3 forwards;
+  text-align: center;
+  margin-top: 20px;
+}
+
 }
 
 .blue-glow {
     font-size: 3em;
     font-weight: bold;
     font-family: 'Orbitron', sans-serif;
-    animation: pulseBlue 3s infinite;
+    animation: pulseBlue 3s ease-in-out 3 forwards;
     text-align: center;
     margin-top: 20px;
 }
