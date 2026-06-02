@@ -94,6 +94,17 @@ async function loadFloor(floorNum){
 
     map.fitBounds(bounds);
 
+	if(window.innerWidth < 768){
+
+		const center = [
+			mapHeight / 2,
+			mapWidth / 2
+    ];
+
+    map.setView(center, 1);
+}
+map.fitBounds(bounds);
+
     setTimeout(() => {
         map.invalidateSize();
     }, 100);
