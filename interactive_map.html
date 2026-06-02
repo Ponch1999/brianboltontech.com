@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<title>LCHS Interactive Map</title>
+
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
+
+<style>
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+}
+
+#toolbar {
+    padding: 10px;
+    background: #f0f0f0;
+    border-bottom: 1px solid #ccc;
+}
+
+#map {
+    height: 92vh;
+    width: 100%;
+}
+
+input, select, button {
+    padding: 8px;
+    margin-right: 10px;
+    font-size: 16px;
+}
+</style>
+</head>
+
+<body>
+
+<div id="toolbar">
+
+<select id="floorSelect">
+    <option value="1">1st Floor</option>
+    <option value="2">2nd Floor</option>
+</select>
+
+<input type="text" id="teacherSearch" placeholder="Type teacher name, press Enter">
+
+<button onclick="toggleCoordMode()">Coordinate Mode</button>
+
+<span id="status"></span>
+
+</div>
+
+<div id="map"></div>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+
+<script>
+
+const mapWidth = 1400;
+const mapHeight = 1000;
+
+const floorImages = {
+    1: "layout_1st_Floor.jpg",
+    2: "layout_2nd_floor.jpg"
+};
+
+let coordMode = false;
+let imageOverlay;
+let currentMarkers = [];
+
+const bounds = [[0,0], [mapHeight, mapWidth]];
+
+const map = L.map('map', {
+    crs: L.CRS.Simple,
+    minZoom: -2,
+    maxZoom: 4,
+    zoomAnimation: false,
+    fadeAnimation: false,
+    markerZoomAnimation: false
+});
+
+async function loadFloor(floorNum){
+
+    if(imageOverlay){
+        map.removeLayer(imageOverlay);
+    }
+
+    currentMarkers.forEach(marker => map.removeLayer(marker));
+    currentMarkers = [];
+
+    imageOverlay = L.imageOverlay(
+        floorImages[floorNum],
+        bounds
+    ).addTo(map);
+
+    map.fitBounds(bounds);
+
+    setTimeout(() => {
+        map.invalidateSize();
+    }, 100);
+
+    await loadMarkers(floorNum);
+}
+
+async function loadMarkers(floorNum){
+
+    const response = await fetch('teachers_rooms.csv?_=' + Date.now());
+    const text = await response.text();
+
+    const rows = text.trim().split('\n');
+
+    rows.slice(1).forEach(row => {
+
+        const cols = row.split(',');
+
+        if(cols.length < 6) return;
+
+        const last = cols[0]?.trim();
+        const first = cols[1]?.trim();
+        const room = cols[2]?.trim();
+        const floor = cols[3]?.trim();
+        const x = parseFloat(cols[4]);
+        const y = parseFloat(cols[5]);
+        const ext = cols[6] ? cols[6].trim() : '';
+
+        if(floor != floorNum) return;
+        if(isNaN(x) || isNaN(y)) return;
+
+        const marker = L.circleMarker([y, x], {
+            radius: 4
+        }).addTo(map);
+
+        marker.teacherName = `${first} ${last}`.toLowerCase();
+
+        marker.bindPopup(`
+            <b>${first} ${last}</b><br>
+            Room: ${room}
+            ${ext ? `<br>Ext: ${ext}` : ''}
+        `, {
+            autoClose: false,
+            closeOnClick: false
+        });
+
+        currentMarkers.push(marker);
+    });
+
+    console.log("Markers loaded:", currentMarkers.length);
+}
+
+document.getElementById('floorSelect').addEventListener('change', async (e)=>{
+
+    localStorage.setItem('selectedFloor', e.target.value);
+
+    await loadFloor(e.target.value);
+});
+
+// SEARCH ONLY ON ENTER
+document.getElementById('teacherSearch').addEventListener('keydown', async function(e){
+
+    if(e.key !== 'Enter') return;
+
+    const search = this.value.toLowerCase().trim();
+
+    if(search.length < 1) return;
+
+    const response = await fetch('teachers_rooms.csv?_=' + Date.now());
+    const text = await response.text();
+
+    const rows = text.trim().split('\n');
+
+    let matchedFloor = null;
+
+    for(const row of rows.slice(1)){
+
+        const cols = row.split(',');
+
+        if(cols.length < 6) continue;
+
+        const last = cols[0]?.trim();
+        const first = cols[1]?.trim();
+        const floor = cols[3]?.trim();
+
+        const teacherName = `${first} ${last}`.toLowerCase();
+
+        if(teacherName.includes(search)){
+
+            matchedFloor = floor;
+            break;
+        }
+    }
+
+    if(!matchedFloor) return;
+
+    if(document.getElementById('floorSelect').value != matchedFloor){
+
+        document.getElementById('floorSelect').value = matchedFloor;
+
+        localStorage.setItem('selectedFloor', matchedFloor);
+
+        await loadFloor(matchedFloor);
+    }
+
+    let foundMarkers = [];
+
+    currentMarkers.forEach(marker => {
+
+        if(marker.teacherName.includes(search)){
+
+            marker.openPopup();
+
+            foundMarkers.push(marker);
+        }
+    });
+
+    if(foundMarkers.length > 0){
+
+        // Open ALL matching popups
+        foundMarkers.forEach(marker => {
+            marker.openPopup();
+        });
+
+        // Center map between all matches
+        const avgLat = foundMarkers.reduce((sum, m) => sum + m.getLatLng().lat, 0) / foundMarkers.length;
+        const avgLng = foundMarkers.reduce((sum, m) => sum + m.getLatLng().lng, 0) / foundMarkers.length;
+
+        map.panTo([avgLat, avgLng]);
+    }
+});
+
+function toggleCoordMode(){
+
+    coordMode = !coordMode;
+
+    document.getElementById('status').innerText =
+        coordMode ? 'Coordinate Mode ON' : '';
+}
+
+map.on('click', function(e){
+
+    if(!coordMode) return;
+
+    const x = Math.round(e.latlng.lng);
+    const y = Math.round(e.latlng.lat);
+
+    L.popup()
+        .setLatLng(e.latlng)
+        .setContent(`
+            X: ${x}<br>
+            Y: ${y}
+        `)
+        .openOn(map);
+});
+
+const savedFloor = localStorage.getItem('selectedFloor') || '1';
+
+document.getElementById('floorSelect').value = savedFloor;
+
+loadFloor(savedFloor);
+
+</script>
+
+</body>
+</html>
