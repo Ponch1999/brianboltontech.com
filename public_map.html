@@ -29,6 +29,11 @@ input, select, button {
     margin-right: 10px;
     font-size: 16px;
 }
+
+.leaflet-popup-content {
+    font-size: 18px;
+    line-height: 1.4;
+}
 </style>
 </head>
 
@@ -121,8 +126,8 @@ async function loadMarkers(floorNum){
         if(isNaN(x) || isNaN(y)) return;
 
         const marker = L.circleMarker([y, x], {
-            radius: 4
-        }).addTo(map);
+			radius: window.innerWidth < 768 ? 8 : 4
+		}).addTo(map);
 
         marker.teacherName = `${first} ${last}`.toLowerCase();
 
