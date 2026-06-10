@@ -4,8 +4,6 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <title>LCHS Staff Directory Map</title>
-	
-<link rel="icon" type="image/x-icon" href="L icon.ico">
 
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"/>
 
@@ -48,7 +46,7 @@ input, select, button {
     <option value="2">2nd Floor</option>
 </select>
 
-<input type="text" id="teacherSearch" placeholder="Type teacher name, press Enter">
+<input type="text" id="teacherSearch" placeholder="Type teacher name or room number">
 
 </div>
 
@@ -105,7 +103,6 @@ async function loadFloor(floorNum){
 
     map.setView(center, 1);
 }
-map.fitBounds(bounds);
 
     setTimeout(() => {
         map.invalidateSize();
@@ -143,6 +140,7 @@ async function loadMarkers(floorNum){
 		}).addTo(map);
 
         marker.teacherName = `${first} ${last}`.toLowerCase();
+		marker.roomNumber = room.toLowerCase();
 
         marker.bindPopup(`
             <b>${first} ${last}</b><br>
@@ -192,9 +190,13 @@ document.getElementById('teacherSearch').addEventListener('keydown', async funct
         const first = cols[1]?.trim();
         const floor = cols[3]?.trim();
 
-        const teacherName = `${first} ${last}`.toLowerCase();
+		const room = cols[2]?.trim();
+		const teacherName = `${first} ${last}`.toLowerCase();
 
-        if(teacherName.includes(search)){
+		if(
+			teacherName.includes(search) ||
+			room.toLowerCase() === search
+){
 
             matchedFloor = floor;
             break;
@@ -216,7 +218,10 @@ document.getElementById('teacherSearch').addEventListener('keydown', async funct
 
     currentMarkers.forEach(marker => {
 
-        if(marker.teacherName.includes(search)){
+        if(
+    marker.teacherName.includes(search) ||
+    marker.roomNumber === search
+){
 
             marker.openPopup();
 
