@@ -4,7 +4,9 @@ Alexander,Neil,Activity/APO Office,1,397,599,1263,Athletic Director
 Alexander,Gregg,Gym,1,590,573,1283,PE
 Allspach,Kella,Business Office,1,711,146,1272,Assistant Bookkeeper 
 Arnold,Cindy,111,1,1092,183,1211 or 1235,Intervention
+Auditorium,,Auditorium,1,734,294,,
 Aukamp,Sally,208,2,1230,109,1242,Science 
+Band Room,,300,2,556,393,,
 Bartels,Josh,209,2,1232,182,1243,Science
 Behrends,Megan,,,,,,Paraprofessional
 Bischoff,Leslie,221,2,1104,374,1252,Social Studies
@@ -14,19 +16,24 @@ Bowman,Donnie,202,2,762,109,1237,LTEC
 Brock,Kristen,108,1,1258,183,1209,Art
 Brummett,Austin,114,1,976,344,1214,Driver Education
 Burton,Dawn,113,1,1050,305,1213,Special Education
-Camp,Mike,Custodians' Office,1,563,174,1276,Maintenance
+Cafeteria,,Cafeteria,1,605,427,,
+Camp,Mike,Custodians' Office,1,603,174,1276,Maintenance
 Campbell,Chelsie,144,1,890,220,1232,Assistant Principal
 Cannon,Anthony,Gym,1,658,573,1285,Study Hall
+Cardio Room,,Cardio Room,1,826,612,1308,
 Casson,August,114,1,976,344,1214,Driver Education
 Charron,Alyssa,110,1,1145,183,1210,Special Education
+Co-Ed Lounge,,Co-Ed Lounge,1,1236,183,1274,
+Conference Room,,Conference Room,1,926,183,,
 Conrady,Anna,219,2,1104,320,1250,Social Studies
-Conrady,Pam,Nurse's Office,1,676,183,1295,Nurse
+Conrady,Pam,Nurse's Office,1,676,148,1295,Nurse
 Cox,Chloe,213,2,817,182,1247,Math
 Craig,Jennifer,253,2,751,493,1257,In-School Suspension
 Cremeens,Melissa,Guidance Office,1,1191,341,1278,Student Support Services
 Croft,Lia,222,2,1235,374,1253,Social Studies 
 Curry,Abigail,Dean of Students,1,388,572,1267,Dean of Students
 Dahmm,Joan,104,1,1033,148,1205,Business
+Davison,Kaitlynn,170,1,406,733,1234,Agriculture
 Dietrich,Justin,172,1,238,733,1236,Woods
 Dorgan,Sally,132,1,1227,287,1227,Paraprofessional
 Ebker,Kelly,131,1,1192,280,1225,Tri-County School Psychologist
@@ -42,7 +49,9 @@ Gohl,Samantha,132,1,1227,277,1227,Paraprofessional
 Gohl,Samantha,134,1,1227,320,1228,Paraprofessional
 Gouin,Jennifer,117,1,1025,406,1217,English
 Graber,Jon,704,1,52,293,1262,Autos/Trans Tech
-Hail,Julie,Custodians' Office,1,563,174,,Custodial
+Guidance Office,,Guidance Office,1,1188,311,,
+Gymnasium,,Gymnasium,1,555,538,,
+Hail,Julie,Custodians' Office,1,583,174,,Custodial
 Hake,Pat,Gym,1,625,573,1283,PE/Driver Ed
 Hall,Stephanie,Guidance Office,1,1153,261,,Guidance
 Hammer,Chris,252,2,715,459,1256,Math
@@ -50,17 +59,18 @@ Hayes,Austin,205,2,999,109,1239,Math
 Helm,David,Principal,1,686,127,1296,Principal
 Hendrickson,Kelly,Asst. Principal's Office,1,419,567,1268,Attendance 
 Hite,Andrew,251,2,678,425,1255,Math
-,,212,2,876,182,1246,
 Huerd,Austin,,,,,,Paraprofessional
+Hulslander,Matt,217,2,1104,270,1248,Social Studies/LTEC
 Hutchison,Kari,,,,,,Paraprofessional
+IMC,,IMC,2,620,148,,
 Jones,Jamie,Main Office/Princ. Ofc,1,742,107,1200/1290,Principal's Admin Assistant
 Jording,Rachel,Superintendent's Office,1,686,101,1289,Superintedent Admin Assistant
 Keith,Jennifer,Tech Office (near IMC),2,653,181,1307,Technology 
 King,Kim,135,1,1190,369,1229,Spanish/PE
-Klockenga,Gabby,Nurse's Office,1,686,166,1295,
-Knerrer,Molly,170,1,406,733,1234,Agriculture
+Klockenga,Gabby,Nurse's Office,1,686,166,1306,
 Komnick,Vanessa,707,1,45,77,1305,Cosmetology
 Leslie,Darian,,,,,,Paraprofessional
+Library,,IMC,2,620,148,,
 Lincoln's Locker,,103,1,978,148,1293,
 Lowery,Sarah,105,1,1102,148,1206,French/English
 Mauhar,Ashleigh,Guidance Office,1,1173,341,1281,Student Support Services
@@ -72,8 +82,10 @@ Miller,Nick,121,1,962,494,1221,English
 Miller,Erin,Business Office,1,753,165,1271,Bookkeeper
 Murphy,Samantha,119,1,1002,452,1219,English
 Musick,Dawn,LTEC,1,223,77,1265,LTEC Administrative Assistant
+Nurse,,Nurse's Office,1,686,148,,
 Osborn,Stellakay,132,1,1227,267,1227,Paraprofessional
 Painter,Jennifer,,,,,,Paraprofessional
+Piano Lab,,300,2,532,400,,
 Podunajec,Tish,,,,,,Paraprofessional
 Polen,Chelsee,Cafe,1,544,326,1273,Cafeteria Manager
 Puckett,Matt,LTEC ,1,243,77,1282,LTEC Director
@@ -81,6 +93,17 @@ Radcliffe,Shannon,118,1,934,425,1218,English
 Range,Nigel,300,2,514,373,1258,Band
 Rayman,Beth,,,,,1303,Paraprofessional
 Reese,Haley,,,,,,Paraprofessional
+Restroom,Women's ,Women's ,1,877,181,,
+Restroom,Women's ,Women's ,1,743,444,,
+Restroom,,Unisex,1,652,438,,
+Restroom,Men's,Men's,1,1168,181,,
+Restroom,Men's,Men's,1,688,454,,
+Restroom,,Unisex,1,1222,233,,
+Restroom,,Unisex,1,190,54,,
+Restroom,Men's,Men's,2,784,178,,
+Restroom,Men's,Men's,2,579,437,,
+Restroom,Women's ,Women's ,2,544,418,,
+Restroom,Women's ,Women's ,2,1119,178,,
 Rezba,Josh,220,2,1235,320,1251,Science
 Roemer,Emmary,120,1,916,476,1220,Special Education
 Rohrer,Taylor,Gym,1,687,573,1286,PE
@@ -106,34 +129,11 @@ Tripplett,Kelly,124,1,812,514,1224,Family & Consumer Science
 Turner,Rhonda,706,1,159,77,1264,Alternative Education
 Varner,Erin,Asst. Principal's Office,1,,,1291,Guidance Counselor
 Varner,Erin,Guidance Office,1,1153,305,1279,Guidance Counselor
-Vazquez,Joe,217,2,1104,270,1248,Social Studies/LTEC
+Weight Room,,Weight Room,1,366,641,1298,
 While,Matt,Training Room,1,526,710,1284,Athletic Trainer
 White,Sam,Activity/APO Office,1,397,535,1270,Activities Admin Assistant/Transportation Director
 Women's Lounge,,Women's Lounge,1,842,214,1299,
-Yeazle,Addison,112,1,1001,288,1212,Special Education
-,,701,1,52,128,1260,
-Cardio Room,,Cardio Room,1,826,612,1308,
-Co-Ed Lounge,,Co-Ed Lounge,1,1236,183,1274,
-Conference Room,,Conference Room,1,926,183,,
-Weight Room,,Weight Room,1,366,641,1298,
-Auditorium,,Auditorium,1,734,294,,
-Cafeteria,,Cafeteria,1,605,427,,
-Gymnasium,,Gymnasium,1,555,538,,
-IMC,,IMC,2,620,148,,
-Library,,IMC,2,620,148,,
 Wood Shop,,172,1,238,733,,
-Piano Lab,,300,2,532,400,,
-Guidance Office,,Guidance Office,1,1188,311,,
-Band Room,,300,2,556,393,,
-Nurse,,Nurse's Office,1,686,148,,
-Restroom,Women's ,Women's ,1,877,181,,
-Restroom,Women's ,Women's ,1,743,444,,
-Restroom,,Unisex,1,652,438,,
-Restroom,Men's,Men's,1,1168,181,,
-Restroom,Men's,Men's,1,688,454,,
-Restroom,,Unisex,1,1222,233,,
-Restroom,,Unisex,1,190,54,,
-Restroom,Men's,Men's,2,784,178,,
-Restroom,Men's,Men's,2,579,437,,
-Restroom,Women's ,Women's ,2,544,418,,
-Restroom,Women's ,Women's ,2,1119,178,,
+Yeazle,Addison,112,1,1001,288,1212,Special Education
+,,212,2,876,182,1246,
+,,701,1,52,128,1260,
